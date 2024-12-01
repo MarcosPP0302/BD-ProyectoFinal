@@ -1,0 +1,9 @@
+{
+	"name": "grupo5-datafactory",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "59bdb6cb-27b1-40f8-8625-70cf623881ea",
+		"tenantId": "57b26eb0-827e-45a5-acda-dff50510d7b2"
+	}
+}
