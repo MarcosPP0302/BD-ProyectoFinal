@@ -1,0 +1,70 @@
+{
+	"name": "ejecutar todo",
+	"properties": {
+		"activities": [
+			{
+				"name": "Execute ingesta",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "copy_input_bronce",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Execute bronce-plata",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Execute ingesta",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "capabronce_capaplata",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Execute plata-oro",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Execute bronce-plata",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "capaplata_capaoro",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"annotations": []
+	}
+}

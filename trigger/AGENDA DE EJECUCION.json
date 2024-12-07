@@ -1,0 +1,26 @@
+{
+	"name": "AGENDA DE EJECUCION",
+	"properties": {
+		"description": "AGENDA UN HORARIO PARA EJECUCION DE PIPELINE",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ejecutar todo",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Hour",
+				"interval": 24,
+				"startTime": "2024-12-07T16:00:00",
+				"endTime": "2024-12-31T23:59:00",
+				"timeZone": "SA Pacific Standard Time"
+			}
+		}
+	}
+}
